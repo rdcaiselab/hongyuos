@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HongYuOS - 航天鸿域智能操作系统</title>
+    <title>HongYuOS航天鸿域智能操作系统</title>
     <style>
         * {
             margin: 0;
@@ -514,6 +514,169 @@
             font-weight: bold;
         }
 
+        /* 产品演示 */
+        .demos {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .demo-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 400px;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f8ff;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: linear-gradient(rgba(230, 243, 255, 0.8), rgba(209, 230, 255, 0.8)), url('images/AILLM.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder[data-video="demo2"] {
+            background: linear-gradient(rgba(230, 243, 255, 0.8), rgba(209, 230, 255, 0.8)), url('images/商业航天.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-placeholder[data-video="demo3"] {
+            background: linear-gradient(rgba(230, 243, 255, 0.8), rgba(209, 230, 255, 0.8)), url('images/工业自动化.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(rgba(209, 230, 255, 0.9), rgba(184, 217, 255, 0.9)), url('images/AILLM.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.02);
+        }
+
+        .video-placeholder[data-video="demo2"]:hover {
+            background: linear-gradient(rgba(209, 230, 255, 0.9), rgba(184, 217, 255, 0.9)), url('images/商业航天.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-placeholder[data-video="demo3"]:hover {
+            background: linear-gradient(rgba(209, 230, 255, 0.9), rgba(184, 217, 255, 0.9)), url('images/工业自动化.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-thumbnail {
+            text-align: center;
+            color: #0066cc;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .play-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .video-thumbnail p {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+
+        .carousel-indicators {
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #0066cc;
+            transform: scale(1.2);
+        }
+
+        /* 视频弹窗 */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 100%;
+            max-width: 800px;
+            max-height: 600px;
+        }
+
         /* 成功案例 */
         .partners {
             padding: 60px 0;
@@ -565,11 +728,49 @@
             padding: 60px 0 30px;
         }
 
+        .footer-intro {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-intro p {
+            color: #ccc;
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo .logo-icon {
+            height: 40px;
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .footer-logo span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0099ff;
+        }
+
+        .footer-top-border {
+            height: 1px;
+            background-color: #333;
+            margin-bottom: 25px;
+        }
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
         }
 
         .footer-section h4 {
@@ -773,7 +974,7 @@
                 </a>
                 
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="#">首页</a></li>
+                    <li class="nav-item"><a href="http://192.168.1.155/home/">首页</a></li>
                     <li class="nav-item"><a href="#features">产品特性</a></li>
                     <li class="nav-item"><a href="#architecture">产品架构</a></li>
                     <li class="nav-item"><a href="#advantages">核心优势</a></li>
@@ -792,7 +993,7 @@
                 
                 <div class="nav-btn">
                     <a href="#" class="btn btn-secondary">文档中心</a>
-                    <a href="#" class="btn btn-primary">立即体验</a>
+                    <a href="shell/index.html?autoconnect=true" target="_blank" class="btn btn-primary">立即体验</a>
                 </div>
                 
                 <div class="menu-toggle" id="menuToggle">
@@ -812,7 +1013,7 @@
                 <p class="hero-subtitle">基于先进技术架构，为航天及工业领域提供安全、可靠、高效的智能操作系统解决方案</p>
                 <div class="hero-btns">
                     <a href="#" class="btn btn-primary">了解更多</a>
-                    <a href="#" class="btn btn-secondary">产品演示</a>
+                    <a href="#demos" class="btn btn-secondary">产品演示</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -979,6 +1180,51 @@
         </div>
     </section>
 
+    <!-- 产品演示 -->
+    <section class="demos" id="demos">
+        <div class="container">
+            <h2 class="section-title">产品演示</h2>
+            <p class="section-subtitle">观看 HongYuOS 操作系统的实际运行演示</p>
+            <div class="demo-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-slide active">
+                            <div class="video-placeholder" data-video="demo1">
+                                <div class="video-thumbnail">
+                                    <div class="play-icon">▶</div>
+                                    <p>HongYu操作系统安装演示</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder" data-video="demo2">
+                                <div class="video-thumbnail">
+                                    <div class="play-icon">▶</div>
+                                    <p>Sparc指令集芯片平台系统上电演示</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder" data-video="demo3">
+                                <div class="video-thumbnail">
+                                    <div class="play-icon">▶</div>
+                                    <p>MDC控制器样机平台系统上电演示</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 成功案例 -->
     <section class="partners" id="partners">
         <div class="container">
@@ -995,11 +1241,15 @@
     <!-- 页脚 -->
     <footer class="footer" id="about">
         <div class="container">
+            <div class="footer-intro">
+                <p>航天鸿域智能操作系统，为航天及工业领域提供安全、可靠、高效的智能解决方案。</p>
+            </div>
+            <a href="#" class="footer-logo">
+                <img src="images/HongYuOS-logo.png" alt="HongYuOS Logo" class="logo-icon">
+                <span>HongYuOS</span>
+            </a>
+            <div class="footer-top-border"></div>
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>HongYuOS</h4>
-                    <p style="color: #ccc; margin-bottom: 20px;">航天鸿域智能操作系统，为航天及工业领域提供安全、可靠、高效的智能解决方案。</p>
-                </div>
                 <div class="footer-section">
                     <h4>产品中心</h4>
                     <ul>
@@ -1007,6 +1257,13 @@
                         <li><a href="#">核心优势</a></li>
                         <li><a href="#">应用场景</a></li>
                         <li><a href="#">技术规格</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>体验下载</h4>
+                    <ul>
+                        <li><a href="http://192.168.1.155:9000/hyos/HongYuOS-1.0/desktop/ISO/aarch64/HongYuOS-1.0-aarch64-desktop-dvd.iso">获取HongYu OS</a></li>
+                        <li><a href="#">软件中心</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1029,10 +1286,20 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 北京航天微系统与信息技术研究所. All rights reserved.</p>
+                <p>版权所有 &copy; 2025 北京航天微系统与信息技术研究所. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- 视频弹窗 -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="close-modal">&times;</button>
+            <video class="modal-video" id="modalVideo" controls>
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
 
     <script>
         // 移动端菜单切换
@@ -1079,6 +1346,130 @@
                 header.style.background = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
             }
+        });
+
+        // 产品演示轮播功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 轮播相关元素
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const videoPlaceholders = document.querySelectorAll('.video-placeholder');
+            
+            // 视频弹窗相关元素
+            const videoModal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const closeModal = document.querySelector('.close-modal');
+            
+            let currentIndex = 0;
+            let autoSlideInterval;
+
+            // 更新轮播显示
+            function updateCarousel() {
+                carouselWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // 更新指示器
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+                
+                // 更新幻灯片激活状态
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }
+
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            }
+
+            // 自动轮播
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000); // 每5秒切换一次
+            }
+
+            // 停止自动轮播
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // 初始化轮播
+            startAutoSlide();
+
+            // 鼠标悬停时暂停自动轮播
+            const carouselContainer = document.querySelector('.demo-carousel');
+            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+            carouselContainer.addEventListener('mouseleave', startAutoSlide);
+
+            // 指示器点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+
+
+            // 视频源映射
+            const videoSources = {
+                'demo1': 'http://192.168.1.155:9000/share/0-EveryoneRW/1-yanshi/HongYuOS/videos/%E5%AE%89%E8%A3%85%E6%BC%94%E7%A4%BA.mp4', // 演示一 - 系统安装演示
+                'demo2': 'http://192.168.1.155:9000/share/0-EveryoneRW/HongYuOS/demo2.mp4', // 演示二
+                'demo3': 'http://192.168.1.155:9000/share/0-EveryoneRW/HongYuOS/demo3.mp4'  // 演示三
+            };
+
+            // 视频占位符点击事件
+            videoPlaceholders.forEach(placeholder => {
+                placeholder.addEventListener('click', function() {
+                    const videoId = this.dataset.video;
+                    // 根据videoId加载对应的视频源
+                    if (videoSources[videoId]) {
+                        modalVideo.src = videoSources[videoId];
+                    } else {
+                        // 如果没有找到对应的视频源，使用默认视频
+                        modalVideo.src = videoSources['demo1'];
+                    }
+                    
+                    // 显示弹窗
+                    videoModal.style.display = 'flex';
+                    
+                    // 播放视频
+                    modalVideo.play();
+                });
+            });
+
+            // 关闭弹窗
+            closeModal.addEventListener('click', () => {
+                videoModal.style.display = 'none';
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            });
+
+            // 点击弹窗背景关闭
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    videoModal.style.display = 'none';
+                    modalVideo.pause();
+                    modalVideo.currentTime = 0;
+                }
+            });
+
+            // ESC键关闭弹窗
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                    videoModal.style.display = 'none';
+                    modalVideo.pause();
+                    modalVideo.currentTime = 0;
+                }
+            });
         });
     </script>
 </body>
